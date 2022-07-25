@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
+import ProjectCard from './components/projectContainer';
 
 function App() {
   return (
-    <React.Component>
-
-
-
-    </React.Component>    
+    <>
+    <ProjectCard/>
+    
+    </>   
   );
 }
 
