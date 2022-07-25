@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Project, Task } from "../../models/Project";
 import TasksCard from "../tasksContainer";
+import "./style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProjectCard(){
 
@@ -22,26 +24,26 @@ function ProjectCard(){
 
     return (
         <>
-        <div >
+        <div className="container-fluid row">
+            <div className="col-lg-3 col-md-3 col-sm-3">
             <h2 >Projects</h2>
-            <div>
-                <table >
-                    <thead>
+                <table className="responsive-table" >
+                    <thead className="table-header">
                         <tr>
-                            <th >ID</th>
-                            <th >Name</th>
-                            <th >Description</th>
-                            <th>Time Created</th>
+                            <th className="col col-1">ID</th>
+                            <th className="col col-2">Name</th>
+                            <th className="col col-3">Description</th>
+                            <th className="col col-4">Time Created</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-row">
                        {projects.map(project => {
                         return (
                             <tr key={project.Id}>
-                                <td >{project.Id}</td>
-                                <td >{project.Name}</td>
-                                <td >{project.Description}</td>
-                                <td >{new Date(project.TimeCreated).toLocaleDateString()}</td>
+                                <td className="col col-1">{project.Id}</td>
+                                <td className="col col-2">{project.Name}</td>
+                                <td className="col col-3">{project.Description}</td>
+                                <td className="col col-4">{new Date(project.TimeCreated).toLocaleDateString()}</td>
                                 <td>
                                 <div onClick={() => {handleClick(project.Tasks)}}>
                                     <h4> TASKS </h4>
@@ -54,9 +56,10 @@ function ProjectCard(){
                 </table>
 
             </div>
-                
+            <div className="col-lg-9 col-md-9 col-sm-9">
+            { tasks.length === 0 ? <h1> </h1> : <TasksCard task={tasks}/>}
+            </div>
         </div>
-        { tasks.length === 0 ? <h1> </h1> : <TasksCard task={tasks}/>}
         </>   
     )
 }
